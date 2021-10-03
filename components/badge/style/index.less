@@ -54,6 +54,11 @@
     box-shadow: 0 0 0 1px @shadow-color-inverse;
   }
 
+  // Tricky way to resolve https://github.com/ant-design/ant-design/issues/30088
+  &-dot.@{number-prefix-cls} {
+    transition: background 1.5s;
+  }
+
   &-count,
   &-dot,
   .@{number-prefix-cls}-custom-component {
@@ -152,20 +157,17 @@
       vertical-align: middle;
     }
 
-    .@{number-prefix-cls}-custom-component {
+    .@{number-prefix-cls}-custom-component,
+    .@{badge-prefix-cls}-count {
       transform: none;
     }
 
     .@{number-prefix-cls}-custom-component,
-    .@{ant-prefix}-scroll-number {
+    .@{number-prefix-cls} {
       position: relative;
       top: auto;
       display: block;
       transform-origin: 50% 50%;
-    }
-
-    .@{badge-prefix-cls}-count {
-      transform: none;
     }
   }
 }
@@ -189,6 +191,7 @@
 
 .@{number-prefix-cls} {
   overflow: hidden;
+  direction: ltr;
   &-only {
     position: relative;
     display: inline-block;

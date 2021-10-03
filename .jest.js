@@ -2,7 +2,7 @@ const transformIgnorePatterns = [
   '/dist/',
   // Ignore modules without es dir.
   // Update: @babel/runtime should also be transformed
-  'node_modules/(?!.*@(babel|ant-design))[^/]+?/(?!(es|node_modules)/)',
+  'node_modules/(?!.*@(babel|ant-design))(?!array-move)[^/]+?/(?!(es|node_modules)/)',
 ];
 
 function getTestRegex(libDir) {
@@ -14,6 +14,7 @@ function getTestRegex(libDir) {
 
 module.exports = {
   verbose: true,
+  testEnvironment: 'jsdom',
   setupFiles: ['./tests/setup.js'],
   setupFilesAfterEnv: ['./tests/setupAfterEnv.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'md'],
